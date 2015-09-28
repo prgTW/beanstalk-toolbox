@@ -50,6 +50,7 @@ class StatsCommand extends Command
 		$src = new Pheanstalk($srcHost, $srcPort);
 
 		$table = new TableHelper(false);
+		$table->setLayout(TableHelper::LAYOUT_BORDERLESS);
 		$table->setHeaders($columns);
 
 		$tubeNames = $src->listTubes();
