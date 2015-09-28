@@ -1,0 +1,23 @@
+{
+    "finder": [
+        {
+            "name": "*.php",
+            "in": "src"
+        },
+        {
+            "name": "*.php",
+            "exclude": [
+                "Tests"
+            ],
+            "in": "vendor"
+        }
+    ],
+    "chmod": "0755",
+    "main": "bin/main.php",
+    "output": "beanbox.phar",
+    "stub": true,
+    "git-version": "git-version",
+    "replacements": {
+        "output": "beanbox.phar"
+    }
+}

@@ -1,0 +1,9 @@
+beanbox.phar
+
+### Composer
+composer.phar
+composer.lock
+vendor/
+
+### OSX
+.DS_Store
