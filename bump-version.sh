@@ -24,7 +24,7 @@ git checkout gh-pages
 cp beanbox.phar downloads/beanbox-${TAG}.phar
 git add downloads/beanbox-${TAG}.phar
 
-SHA1=$(openssl sha1 beanbox.phar)
+SHA1=$(openssl sha1 beanbox.phar | awk '{print $2}')
 
 JSON='name:"beanbox.phar"'
 JSON="${JSON},sha1:\"${SHA1}\""
