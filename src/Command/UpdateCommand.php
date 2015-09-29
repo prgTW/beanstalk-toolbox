@@ -8,7 +8,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SelfUpdateCommand extends Command
+class UpdateCommand extends Command
 {
 	const MANIFEST_FILE = 'http://prgtw.github.io/beanstalk-toolbox/manifest.json';
 

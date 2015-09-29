@@ -10,6 +10,6 @@ $application = new \Symfony\Component\Console\Application('Beanstalk Toolbox', '
 $application->addCommands([
 	new Command\CopyCommand,
 	new Command\StatsCommand,
-	new Command\SelfUpdateCommand,
+	new Command\UpdateCommand,
 ]);
 $application->run();
