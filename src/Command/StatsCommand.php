@@ -14,10 +14,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class StatsCommand extends Command
 {
-	const ATTR_HOST = 'host';
-	const OPT_PORT  = 'port';
-	const OPT_SORT  = 'sort';
-	const OPT_ORDER = 'order';
+	const ATTR_HOST    = 'host';
+	const OPT_PORT     = 'port';
+	const OPT_SORT     = 'sort';
+	const OPT_ORDER    = 'order';
+	const OPT_NO_ZEROS = 'no-zeros';
 
 	/** {@inheritdoc} */
 	protected function configure()
@@ -29,6 +30,7 @@ class StatsCommand extends Command
 		$this->addOption(self::OPT_PORT, null, InputOption::VALUE_REQUIRED, 'Source port', PheanstalkInterface::DEFAULT_PORT);
 		$this->addOption(self::OPT_SORT, null, InputOption::VALUE_REQUIRED, 'Source port', 'ready');
 		$this->addOption(self::OPT_ORDER, null, InputOption::VALUE_REQUIRED, 'Sort order', -1);
+		$this->addOption(self::OPT_NO_ZEROS, null, InputOption::VALUE_NONE, 'Don\'t show zeros');
 	}
 
 	/** {@inheritdoc} */
@@ -38,6 +40,7 @@ class StatsCommand extends Command
 		$srcPort = $input->getOption(self::OPT_PORT);
 		$sort    = $input->getOption(self::OPT_SORT);
 		$order   = $input->getOption(self::OPT_ORDER);
+		$noZeros = $input->getOption(self::OPT_NO_ZEROS);
 
 		$columns = [
 			'name'                  => 'name',
@@ -63,7 +66,17 @@ class StatsCommand extends Command
 			$response = $src->statsTube($tube);
 			$tubeData = $response->getArrayCopy();
 			$tubeData = array_intersect_key($tubeData, $columns);
-			$data[]   = $tubeData;
+			if ($noZeros)
+			{
+				foreach ($tubeData as $key => $value)
+				{
+					if ('0' === $value)
+					{
+						$tubeData[$key] = '';
+					}
+				}
+			}
+			$data[] = $tubeData;
 		}
 
 		$column = array_search($sort, $columns);
