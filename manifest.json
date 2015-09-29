@@ -1,6 +1,14 @@
-{
-    "name": "beanbox.phar",
-    "sha1": "29aee7f58dba4a633d1ef1c33108a6df8232a1dd",
-    "url": "http://prgtw.github.io/beanstalk-toolbox/downloads/beanbox-0.0.5.phar",
-    "version": "0.0.5"
-}
+[
+    {
+        "name": "beanbox.phar",
+        "sha1": "29aee7f58dba4a633d1ef1c33108a6df8232a1dd",
+        "url": "http://prgtw.github.io/beanstalk-toolbox/downloads/beanbox-0.0.5.phar",
+        "version": "0.0.5"
+    },
+    {
+        "name": "beanbox.phar",
+        "sha1": "4483292ff5e1065a57b3fd929a8c7064a8f25d43",
+        "url": "http://prgtw.github.io/beanstalk-toolbox/downloads/beanbox-0.0.6.phar",
+        "version": "0.0.6"
+    }
+]
